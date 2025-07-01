@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic Meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- SEO -->
+    <title>PEDREZ</title>
+    <meta
+      name="description"
+      content="Architecture and research practice based in Porto, Portugal. Projects, archive, and studio information."
+    />
+    <meta name="author" content="R2Design" />
+    <!-- Favicon -->
+    <link rel="icon" href="images/head/favicon.ico" type="image/x-icon" />
+    <!--  Styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <nav class="grid">
+        <h1>PEDRÊZ</h1>
+        <h2>
+          Architecture and construction. <br />
+          Cultivated building materials and Infrastructures of self-sufficiency.
+        </h2>
+      </nav>
+
+      <section class="grid images">
+        <button class="arrow left">&#8592;</button>
+
+        <div class="slider-content">
+          <img id="slider-image" src="00.png" alt="" />
+        </div>
+        <div class="info">
+          <div class="slider-indicator">
+            <span id="slider-current">01</span>/<span id="slider-total"
+              >15</span
+            >
+          </div>
+
+          <button class="arrow right">&#8594;</button>
+
+          <div class="slider-meta">
+            <p id="slider-title">Title</p>
+            <p id="slider-description">
+              Cultivated building materials and Infrastructures of
+              self-sufficiency.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="contacts grid">
+          <p>EM</p>
+          <a>franciscofonseca@pedrez.com</a>
+        </div>
+        <div class="contacts grid">
+          <p>EG</p>
+          <a>franciscofonseca@pedrez.com</a>
+        </div>
+        <div class="contacts grid">
+          <p>TM</p>
+          <a>00351 000 000</a>
+        </div>
+        <div class="contacts grid">
+          <p>IG</p>
+          <a>@oficina_pedrez</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const images = [
+        {
+          src: "00.png",
+          title: "Title 1",
+          description:
+            "Cultivated building materials and Infrastructures of self-sufficiency.",
+        },
+        {
+          src: "01.png",
+          title: "Title 2",
+          description: "Another architecture concept description here.",
+        },
+        {
+          src: "02.png",
+          title: "Title 3",
+          description: "Further description of this work or project.",
+        },
+        // Add more images as needed
+      ];
+
+      let current = 0;
+
+      const imgEl = document.getElementById("slider-image");
+      const titleEl = document.getElementById("slider-title");
+      const descEl = document.getElementById("slider-description");
+      const currentEl = document.getElementById("slider-current");
+      const totalEl = document.getElementById("slider-total");
+
+      totalEl.textContent = String(images.length).padStart(2, "0");
+
+      function updateSlider(index) {
+        const image = images[index];
+        imgEl.src = image.src;
+        titleEl.textContent = image.title;
+        descEl.textContent = image.description;
+        currentEl.textContent = String(index + 1).padStart(2, "0");
+      }
+
+      document.querySelector(".arrow.left").addEventListener("click", () => {
+        current = (current - 1 + images.length) % images.length;
+        updateSlider(current);
+      });
+
+      document.querySelector(".arrow.right").addEventListener("click", () => {
+        current = (current + 1) % images.length;
+        updateSlider(current);
+      });
+
+      updateSlider(current);
+    </script>
+  </body>
+</html>
